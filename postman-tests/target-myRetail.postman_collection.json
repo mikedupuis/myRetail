@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "ed8f651f-cd3c-b7f0-928d-3ce14309927b",
+		"name": "target/myRetail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Price",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4971d88-30d7-4105-aacb-ea7adcb9ab70",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"id is 13860428\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(13860428);",
+							"});",
+							"",
+							"pm.test(\"name is The Big Lebowski (Blu-ray)\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"The Big Lebowski (Blu-ray)\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/products/13860428",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"13860428"
+					]
+				},
+				"description": "Get product info for a specific product"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Price 10.99 USD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1984e904-72da-41bb-b0ca-871dcb869d6f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "78e36885-9821-4f50-9f29-4b7e9b72e3d9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 123,\n    \"name\": \"This data is ignored\",\n    \"current_price\": {\n        \"value\": 10.99,\n        \"currency_code\": \"USD\"\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/products/13860428",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"13860428"
+					]
+				},
+				"description": "PUT to /products/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Price 10.99 USD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5566e81-a5a9-4d43-b727-e3238f92959d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"id is 13860428\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(13860428);",
+							"});",
+							"",
+							"pm.test(\"name is The Big Lebowski (Blu-ray)\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"The Big Lebowski (Blu-ray)\");",
+							"});",
+							"",
+							"pm.test(\"price is 10.99\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.current_price.value).to.eql(10.99);",
+							"});",
+							"",
+							"pm.test(\"currency_code is USD\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.current_price.currency_code).to.eql(\"USD\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/products/13860428",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"13860428"
+					]
+				},
+				"description": "Get product info for a specific product"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Price 11.99 CAD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a98628b-ee8d-4c30-be51-97ee5f8aec95",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 99,\n    \"name\": \"Unused\",\n    \"current_price\": {\n        \"value\": 11.99,\n        \"currency_code\": \"CAD\"\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/products/13860428",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"13860428"
+					]
+				},
+				"description": "PUT to /products/{id}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Price 10.99 USD Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e84b6f7-a992-4a61-bf8e-741dcd9fc2ad",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"id is 13860428\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(13860428);",
+							"});",
+							"",
+							"pm.test(\"name is The Big Lebowski (Blu-ray)\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"The Big Lebowski (Blu-ray)\");",
+							"});",
+							"",
+							"pm.test(\"price is 11.99\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.current_price.value).to.eql(11.99);",
+							"});",
+							"",
+							"pm.test(\"currency_code is CAD\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.current_price.currency_code).to.eql(\"CAD\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/products/13860428",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"13860428"
+					]
+				},
+				"description": "Get product info for a specific product"
+			},
+			"response": []
+		}
+	]
+}
